@@ -1,20 +1,26 @@
 import type { FC, SVGProps } from "react";
 import {
+  CloseIcon,
   FollowIcon,
+  MoonIcon,
   MoreIcon,
   PlaneIcon,
   RouteIcon,
   SeparatorPlaneIcon,
   SharedIcon,
+  SunIcon,
 } from "./icons";
 
 const config = {
+  close: CloseIcon,
+  follow: FollowIcon,
+  moon: MoonIcon,
   more: MoreIcon,
   plane: PlaneIcon,
-  separatorPlane: SeparatorPlaneIcon,
   route: RouteIcon,
-  follow: FollowIcon,
+  separatorPlane: SeparatorPlaneIcon,
   shared: SharedIcon,
+  sun: SunIcon,
 };
 
 type IconType = keyof typeof config;

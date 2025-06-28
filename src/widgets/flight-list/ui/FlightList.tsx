@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 export const FlightList = () => {
   return (
-    // <div className="">
     <ul className="flex flex-col gap-4 w-full max-w-100">
       {FLIGHTS.map((el) => {
         return (
@@ -12,7 +11,7 @@ export const FlightList = () => {
             <div className="w-full min-h-50 rounded-2xl focus-within:p-[2px] p-0.5 focus-within:bg-gradient-to-r focus-within:from-[#E44948] focus-within:to-[#FBA316] inline-block overflow-hidden transition-colors">
               <Link
                 to={"?airline=" + el.airline}
-                className="h-50 focus:outline-0 rounded-2xl flex flex-col text-white bg-gray-900 p-4 gap-9"
+                className="h-50 focus:outline-0 rounded-2xl flex flex-col text-foreground dark:text-foreground-dark bg-primary dark:bg-primary-dark p-4 gap-9 transition-colors"
               >
                 <div className="flex items-center mb-auto">
                   <div className="flex items-center gap-2 mr-auto">
@@ -25,26 +24,28 @@ export const FlightList = () => {
                     </div>
                     <div>{el.airline}</div>
                   </div>
-                  <div className="rounded-xl p-1 bg-gray-700 mr-4">93247</div>
-                  <div className="rounded-xl p-1 bg-gray-700">
+                  <div className="rounded-xl p-1 bg-secondary dark:bg-secondary-dark mr-4 transition-colors">
+                    93247
+                  </div>
+                  <div className="rounded-xl p-1 bg-secondary dark:bg-secondary-dark transition-colors">
                     {el.aircraftReg}
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="flex flex-col gap-2">
-                    <div>{el.from.city}</div>
-                    <div>{el.from.code}</div>
+                    <div className="text-base">{el.from.city}</div>
+                    <div className="text-5xl">{el.from.code}</div>
                   </div>
                   <div className="w-full h-1 rounded-2xl flex relative">
                     <div className="w-1/2 h-full bg-gradient-to-r from-[#E44948] to-[#FBA316] rounded-l-2xl"></div>
                     <div className="absolute -top-8 translate-y-full left-1/2 -translate-x-1/2">
                       <PlaneIcon />
                     </div>
-                    <div className="w-1/2 h-full bg-[#FFFFFF1A] rounded-r-2xl"></div>
+                    <div className="w-1/2 h-full bg-secondary dark:bg-secondary-dark rounded-r-2xl transition-colors"></div>
                   </div>
                   <div className="flex flex-col gap-2">
-                    <div>{el.to.city}</div>
-                    <div>{el.to.code}</div>
+                    <div className="text-base">{el.to.city}</div>
+                    <div className="text-5xl">{el.to.code}</div>
                   </div>
                 </div>
               </Link>
@@ -53,12 +54,5 @@ export const FlightList = () => {
         );
       })}
     </ul>
-
-    // </div>
   );
 };
-{
-  /* <pre className="whitespace-pre-wrap bg-gray-100 p-4 rounded text-sm">
-        {JSON.stringify(FLIGHTS, null, 2)}
-      </pre> */
-}

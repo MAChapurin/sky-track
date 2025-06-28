@@ -1,9 +1,8 @@
-import { FlightList } from "@/widgets";
-import { FlightDetail } from "@/widgets/flight-detail";
+import { FlightDetail, FlightList } from "@/widgets";
 
 export function HomePage() {
   return (
-    <main className="flex justify-between">
+    <main className="flex justify-between" role="main">
       <FlightList />
       <FlightDetail />
     </main>

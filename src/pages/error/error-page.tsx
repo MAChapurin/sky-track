@@ -21,8 +21,10 @@ export function ErrorPage() {
       className="h-screen flex flex-col items-center justify-center text-center p-4"
     >
       <h1 className="text-4xl font-bold text-red-500">Oops!</h1>
-      <p className="text-lg mt-2">Sorry, an unexpected error has occurred.</p>
-      <p className="mt-4 text-sm text-gray-400">
+      <p className="text-lg mt-2 text-foreground dark:text-foreground-dark">
+        Sorry, an unexpected error has occurred.
+      </p>
+      <p className="mt-4 text-sm text-foreground dark:text-foreground-dark">
         <i>{message}</i>
       </p>
     </div>
