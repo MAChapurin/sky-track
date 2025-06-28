@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const FlightList = () => {
   return (
-    <ul className="flex flex-col gap-4 w-full max-w-100">
+    <ul className="flex flex-col gap-4 w-100 h-fit">
       {FLIGHTS.map((el) => {
         return (
           <li key={el.airline} className="">
@@ -24,10 +24,10 @@ export const FlightList = () => {
                     </div>
                     <div>{el.airline}</div>
                   </div>
-                  <div className="rounded-xl p-1 bg-secondary dark:bg-secondary-dark mr-4 transition-colors">
+                  <div className="rounded-xl p-1 bg-secondary dark:bg-secondary-dark mr-4">
                     93247
                   </div>
-                  <div className="rounded-xl p-1 bg-secondary dark:bg-secondary-dark transition-colors">
+                  <div className="rounded-xl p-1 bg-secondary dark:bg-secondary-dark">
                     {el.aircraftReg}
                   </div>
                 </div>

@@ -14,7 +14,7 @@ export const BackgroundMap = () => {
       loading="lazy"
       referrerPolicy="no-referrer-when-downgrade"
       style={{
-        background: "black",
+        background: "#11111120",
         position: "fixed",
         top: 0,
         left: 0,
