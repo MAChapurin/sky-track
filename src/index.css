@@ -1,0 +1,32 @@
+@import "tailwindcss";
+@import './assets/fonts.css';
+
+:root {
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: "JetBrains Mono", monospace;
+}
+
+a {
+  text-decoration: inherit;
+}
+
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
