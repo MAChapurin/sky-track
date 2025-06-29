@@ -1,4 +1,4 @@
-import { useSyncExternalStore } from "react";
+import { useLayoutEffect, useSyncExternalStore } from "react";
 import { THEME_MODE } from "../constants";
 import { themeStore } from "./use-theme";
 
@@ -13,6 +13,10 @@ export const useSwithTheme = () => {
       theme === THEME_MODE.DARK ? THEME_MODE.LIGHT : THEME_MODE.DARK
     );
   };
+
+  useLayoutEffect(() => {
+    themeStore.setTheme(theme);
+  }, [theme]);
 
   return {
     onClick,
