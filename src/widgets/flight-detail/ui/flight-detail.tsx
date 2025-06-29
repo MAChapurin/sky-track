@@ -18,7 +18,7 @@ export const FlightDetail = () => {
   if (!targetFlight) return null;
 
   return (
-    <div className="flex">
+    <div className="flex mb-8">
       <div className="w-130 h-fit rounded-2xl overflow-hidden sticky top-0 text-white">
         <div className="min-h-90 bg-gradient-to-r from-[#336699] to-[#8ABFFF] p-5">
           <div

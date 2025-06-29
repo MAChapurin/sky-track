@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 
 export const FlightList = () => {
   return (
-    <ul className="flex flex-col gap-4 w-100 h-fit">
+    <ul className="flex flex-col gap-4 w-100 h-fit mb-8">
       {FLIGHTS.map((el) => {
         return (
-          <li key={el.airline} className="">
+          <li key={el.airline} className="snap-start">
             <div className="w-full min-h-50 rounded-2xl focus-within:p-[2px] p-0.5 focus-within:bg-gradient-to-r focus-within:from-[#E44948] focus-within:to-[#FBA316] inline-block overflow-hidden transition-colors">
               <Link
                 to={"?airline=" + el.airline}
