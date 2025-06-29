@@ -1,7 +1,9 @@
 import type { FC, SVGProps } from "react";
 import {
+  BackIcon,
   CloseIcon,
   FollowIcon,
+  HomeIcon,
   MoonIcon,
   MoreIcon,
   PlaneIcon,
@@ -12,8 +14,10 @@ import {
 } from "./icons";
 
 const config = {
+  back: BackIcon,
   close: CloseIcon,
   follow: FollowIcon,
+  home: HomeIcon,
   moon: MoonIcon,
   more: MoreIcon,
   plane: PlaneIcon,

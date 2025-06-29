@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "@/app/App";
-import { HomePage } from "@/pages";
+import { HomePage, NotFoundPage } from "@/pages";
 import { ErrorPage } from "@/pages/error/error-page";
 
 export const router = createBrowserRouter([
@@ -12,6 +12,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+      },
+      {
+        path: "*",
+        element: <NotFoundPage />,
       },
     ],
   },

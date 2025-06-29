@@ -1,5 +1,7 @@
+export * from "./back-icon";
 export * from "./close-icon";
 export * from "./follow-icon";
+export * from "./home-icon";
 export * from "./more-icon";
 export * from "./moon-icon";
 export * from "./plane-icon";
