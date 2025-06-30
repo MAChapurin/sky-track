@@ -10,9 +10,7 @@ export function HomePage() {
       <ScrollContainer className="w-full flex justify-center lg:w-fit lg:block">
         <FlightList />
       </ScrollContainer>
-      <ScrollContainer className="fixed top-0 left-0 lg:relative">
-        <FlightDetail />
-      </ScrollContainer>
+      <FlightDetail />
     </main>
   );
 }
