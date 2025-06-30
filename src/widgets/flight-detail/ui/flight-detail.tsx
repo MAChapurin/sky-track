@@ -20,7 +20,7 @@ export const FlightDetail = () => {
   if (!targetFlight) return null;
 
   return (
-    <div className="w-full max-w-130 h-fit rounded-2xl overflow-hidden sticky top-0 text-white shrink-0">
+    <div className={cn("w-full max-w-130 h-fit md:rounded-2xl text-white")}>
       <div className="min-h-90 bg-gradient-to-r from-[#336699] to-[#8ABFFF] p-5 snap-start">
         <div
           className={cn(
@@ -49,12 +49,11 @@ export const FlightDetail = () => {
         </div>
         <img
           loading="lazy"
-          src={targetFlight.airplane.image}
-          alt={targetFlight.airplane.name}
-          title={targetFlight.airplane.name}
+          src={targetFlight?.airplane.image}
+          alt={targetFlight?.airplane.name}
+          title={targetFlight?.airplane.name}
         />
       </div>
-      <div className="snap-start"></div>
       <div className={cn("min-h-100 p-4", styles.backgroundFull)}>
         <div className="grid grid-cols-2 gap-1 relative mb-2.5">
           <Icon
@@ -63,7 +62,7 @@ export const FlightDetail = () => {
           />
           <div
             className={cn(
-              "flex flex-col items-center p-6 rounded-tl-2xl",
+              "flex flex-col items-center p-6 rounded-tl-2xl snap-start",
               styles.backgroundPrimary
             )}
           >
@@ -95,7 +94,7 @@ export const FlightDetail = () => {
           </div>
           <div
             className={cn(
-              "col-span-2 px-4 py-6 flex flex-col gap-6",
+              "col-span-2 px-4 py-6 flex flex-col gap-6 snap-start",
               styles.backgroundPrimary
             )}
           >
@@ -180,7 +179,7 @@ export const FlightDetail = () => {
             </time>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-1 relative mb-2.5">
+        <div className="grid grid-cols-2 gap-1 relative mb-2.5 snap-start snap-start">
           <div
             className={cn(
               "col-span-2 bg-[#FFFFFF1A] p-4 rounded-t-2xl",
