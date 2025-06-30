@@ -7,7 +7,7 @@ import { SEARCH_PARAMS } from "@/shared/config";
 
 export const useFlightDetail = () => {
   const [targetFlight, setTargetFlight] = useState<IFlight>();
-
+  const [isVisible, setIsVisible] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const targetAirline = FLIGHTS.find(
     (el) => el.airline === searchParams.get(SEARCH_PARAMS.AIRLINE)
@@ -21,21 +21,33 @@ export const useFlightDetail = () => {
     } else {
       setTargetFlight(targetAirline);
     }
+    if (targetAirline) {
+      setTimeout(() => {
+        setIsVisible(true);
+      }, 200);
+    }
   }, [targetAirline]);
 
   const onClose = () => {
-    setSearchParams((searchParams) => {
-      searchParams.delete(SEARCH_PARAMS.AIRLINE);
-      return searchParams;
-    });
+    setIsVisible(false);
+    setTimeout(() => {
+      setSearchParams((searchParams) => {
+        searchParams.delete(SEARCH_PARAMS.AIRLINE);
+        return searchParams;
+      });
+    }, 200);
   };
 
   useEffect(() => {
     onTarget();
+    if (!targetAirline) {
+      setIsVisible(false);
+    }
   }, [onTarget, targetAirline]);
 
   return {
     onClose,
     targetFlight,
+    isVisible,
   };
 };

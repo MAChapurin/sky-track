@@ -15,12 +15,19 @@ const styles = {
 } as const;
 
 export const FlightDetail = () => {
-  const { targetFlight, onClose } = useFlightDetail();
+  const { targetFlight, onClose, isVisible } = useFlightDetail();
 
   if (!targetFlight) return null;
 
   return (
-    <div className={cn("w-full max-w-130 h-fit md:rounded-2xl text-white")}>
+    <div
+      className={cn(
+        "w-full max-w-130 h-fit md:rounded-2xl text-white transition-transform",
+        {
+          ["translate-x-full"]: !isVisible,
+        }
+      )}
+    >
       <div className="min-h-90 bg-gradient-to-r from-[#336699] to-[#8ABFFF] p-5 snap-start">
         <div
           className={cn(
@@ -179,7 +186,7 @@ export const FlightDetail = () => {
             </time>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-1 relative mb-2.5 snap-start snap-start">
+        <div className="grid grid-cols-2 gap-1 relative mb-2.5 snap-start">
           <div
             className={cn(
               "col-span-2 bg-[#FFFFFF1A] p-4 rounded-t-2xl",
