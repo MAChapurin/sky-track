@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const FlightList = () => {
   return (
-    <ul className="flex flex-col gap-4 w-100 h-fit mb-8">
+    <ul className="flex flex-col gap-4 w-full max-w-100 lg:w-100 h-fit mb-8 shrink-0">
       {FLIGHTS.map((el) => {
         return (
           <li key={el.airline} className="snap-start">
