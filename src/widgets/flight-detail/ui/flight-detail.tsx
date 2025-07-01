@@ -21,7 +21,7 @@ export const FlightDetail = () => {
     useFlightDetail();
 
   return (
-    <ScrollContainer className="fixed lg:static shrink-1 justify-self-end">
+    <ScrollContainer className="fixed left-0 top-0 h-screen md:h-[calc(100dvh-120px)] w-screen md:w-full lg:static shrink-1 justify-self-end flex justify-end pointer-events-none">
       <div
         ref={containerRef}
         className={cn(
