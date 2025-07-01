@@ -13,7 +13,7 @@ export const ScrollContainer = ({
     <div
       ref={containerRef}
       className={cn(
-        "h-screen overflow-y-auto overscroll-contain snap-y snap-mandatory relative lg:block",
+        "h-full overflow-y-auto overscroll-contain snap-y snap-mandatory relative",
         "scrollbar-none",
         "shadow-inner-top",
         className

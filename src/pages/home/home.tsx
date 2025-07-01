@@ -1,15 +1,9 @@
-import { ScrollContainer } from "@/shared/ui/scroll-container";
 import { FlightDetail, FlightList } from "@/widgets";
 
 export function HomePage() {
   return (
-    <main
-      className="w-full h-full flex justify-center lg:justify-between"
-      role="main"
-    >
-      <ScrollContainer className="w-full flex justify-center lg:w-fit lg:block">
-        <FlightList />
-      </ScrollContainer>
+    <main className="w-full h-full grid grid-cols-1 md:grid-cols-2" role="main">
+      <FlightList />
       <FlightDetail />
     </main>
   );
