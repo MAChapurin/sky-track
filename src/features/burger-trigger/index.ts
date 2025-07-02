@@ -1,1 +1,1 @@
-export * from "./ui/burger-trigger";
+export * from './ui/burger-trigger'

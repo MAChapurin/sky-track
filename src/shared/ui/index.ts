@@ -1,2 +1,2 @@
-export * from "./icon";
-export * from "./scroll-container";
+export * from './icon'
+export * from './scroll-container'

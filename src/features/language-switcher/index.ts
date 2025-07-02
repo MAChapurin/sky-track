@@ -1,1 +1,1 @@
-export * from "./ui/language-switcher";
+export * from './ui/language-switcher'

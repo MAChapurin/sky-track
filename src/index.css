@@ -1,60 +1,56 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @import './assets/fonts.css';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-
 @theme {
-  --color-background: #ffffff;
-  --color-foreground: #000000;
-  --color-primary: #f3f4f6;
-  --color-secondary: #e5e7eb;
-  --color-accent: #d97706;
-  --color-muted: #6b7280;
+	--color-background: #ffffff;
+	--color-foreground: #000000;
+	--color-primary: #f3f4f6;
+	--color-secondary: #e5e7eb;
+	--color-accent: #d97706;
+	--color-muted: #6b7280;
 
-  --color-background-dark: #111111;
-  --color-foreground-dark: #ffffff;
-  --color-primary-dark: #1C1C1C;
-  --color-secondary-dark: #FFFFFF1A;
-  --color-accent-dark: #FBA316;
-  --color-muted-dark: #FFFFFF66;
+	--color-background-dark: #111111;
+	--color-foreground-dark: #ffffff;
+	--color-primary-dark: #1c1c1c;
+	--color-secondary-dark: #ffffff1a;
+	--color-accent-dark: #fba316;
+	--color-muted-dark: #ffffff66;
 }
 
 :root {
-  color-scheme: light dark;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  
+	color-scheme: light dark;
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  font-family: "JetBrains Mono", monospace;
+	font-family: 'JetBrains Mono', monospace;
 }
 
 a {
-  text-decoration: inherit;
+	text-decoration: inherit;
 }
-
 
 body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
+	margin: 0;
+	min-width: 320px;
+	min-height: 100vh;
 }
 
-
 button {
-  font-family: inherit;
-  cursor: pointer;
+	font-family: inherit;
+	cursor: pointer;
 }
 
 .scrollbar-none::-webkit-scrollbar {
-  display: none;
+	display: none;
 }
 
 .scrollbar-none {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
 }

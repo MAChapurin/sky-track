@@ -1,1 +1,1 @@
-export * from "./flight.types";
+export * from './flight.types'

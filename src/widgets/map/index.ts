@@ -1,1 +1,1 @@
-export * from "./ui/background-map";
+export * from './ui/background-map'

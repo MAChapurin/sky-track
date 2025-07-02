@@ -1,1 +1,1 @@
-export * from "./ui/nav-desktop";
+export * from './ui/nav-desktop'

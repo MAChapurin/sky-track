@@ -1,1 +1,1 @@
-export * from "./ui/flight-detail";
+export * from './ui/flight-detail'
