@@ -1,53 +1,53 @@
 import type { FC, SVGProps } from 'react'
 import {
-	ArrowDownIcon,
-	ArrowGroupIcon,
-	BackIcon,
-	CheckedIcon,
-	CloseIcon,
-	ColumnsIcon,
-	FavoritesIcon,
-	FlightRadarIcon,
-	FollowIcon,
-	HomeIcon,
-	MoonIcon,
-	MoreIcon,
-	PlaneIcon,
-	ProfileIcon,
-	RouteIcon,
-	SeparatorPlaneIcon,
-	SharedIcon,
-	SunIcon
+  ArrowDownIcon,
+  ArrowGroupIcon,
+  BackIcon,
+  CheckedIcon,
+  CloseIcon,
+  ColumnsIcon,
+  FavoritesIcon,
+  FlightRadarIcon,
+  FollowIcon,
+  HomeIcon,
+  MoonIcon,
+  MoreIcon,
+  PlaneIcon,
+  ProfileIcon,
+  RouteIcon,
+  SeparatorPlaneIcon,
+  SharedIcon,
+  SunIcon
 } from './icons'
 
 const config = {
-	arrowDown: ArrowDownIcon,
-	arrowGroup: ArrowGroupIcon,
-	back: BackIcon,
-	checked: CheckedIcon,
-	close: CloseIcon,
-	columns: ColumnsIcon,
-	favorites: FavoritesIcon,
-	follow: FollowIcon,
-	home: HomeIcon,
-	logo: FlightRadarIcon,
-	moon: MoonIcon,
-	more: MoreIcon,
-	plane: PlaneIcon,
-	profile: ProfileIcon,
-	route: RouteIcon,
-	separatorPlane: SeparatorPlaneIcon,
-	shared: SharedIcon,
-	sun: SunIcon
+  arrowDown: ArrowDownIcon,
+  arrowGroup: ArrowGroupIcon,
+  back: BackIcon,
+  checked: CheckedIcon,
+  close: CloseIcon,
+  columns: ColumnsIcon,
+  favorites: FavoritesIcon,
+  follow: FollowIcon,
+  home: HomeIcon,
+  logo: FlightRadarIcon,
+  moon: MoonIcon,
+  more: MoreIcon,
+  plane: PlaneIcon,
+  profile: ProfileIcon,
+  route: RouteIcon,
+  separatorPlane: SeparatorPlaneIcon,
+  shared: SharedIcon,
+  sun: SunIcon
 }
 
 type IconType = keyof typeof config
 
 interface IconProps extends SVGProps<SVGSVGElement> {
-	name: IconType
+  name: IconType
 }
 
 export const Icon: FC<IconProps> = ({ name, ...props }) => {
-	const SVGIcon = config[name]
-	return <SVGIcon {...props} />
+  const SVGIcon = config[name]
+  return <SVGIcon {...props} />
 }

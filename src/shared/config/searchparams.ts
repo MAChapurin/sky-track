@@ -1,3 +1,3 @@
 export const SEARCH_PARAMS = {
-	AIRLINE: 'airline'
+  AIRLINE: 'airline'
 } as const
