@@ -2,8 +2,11 @@ import { Icon } from '@/shared/ui'
 import { cn } from '@/shared/utils'
 
 import { useLiveSearch } from '../model/useLiveSearch'
-import type { LiveSearchProps } from '../types'
 import { useId } from 'react'
+
+interface LiveSearchProps {
+  items: string[]
+}
 
 export const LiveSearch = ({ items }: LiveSearchProps) => {
   const {
