@@ -11,7 +11,7 @@ export const CloseButton = ({ onClick }: CloseButtonProps) => {
       onClick={onClick}
       data-ignore-swipe
       className={cn(
-        'w-10 h-10 flex items-center justify-center rounded-full transition-colors hover:bg-foreground relative z-10 bg-secondary dark:bg-secondary-dark text-foreground dark:text-foreground-dark'
+        'w-10 h-10 flex items-center justify-center rounded-full transition-colors hover:bg-accent dark:hover:bg-accent-dark relative z-10 bg-secondary dark:bg-secondary-dark text-foreground dark:text-foreground-dark'
       )}
       aria-label="Close flight detail"
       type="button"

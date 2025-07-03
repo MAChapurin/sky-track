@@ -4,6 +4,7 @@ import { useFlightDetail } from '../model/use-flight-detail'
 import { ProgressLine } from './progress-line'
 import { CloseButton } from './close-button'
 import { ScrollContainer } from '@/shared/ui'
+import { DetailControls } from './controls'
 
 const styles = {
   flexCenter: 'flex flex-col items-center justify-center',
@@ -21,7 +22,7 @@ export const FlightDetail = () => {
     useFlightDetail()
 
   return (
-    <ScrollContainer className="fixed left-0 top-0 h-screen md:h-[calc(100dvh-120px)] w-screen md:w-full lg:static shrink-1 justify-self-end flex justify-end pointer-events-none">
+    <ScrollContainer className="fixed z-100 left-0 top-0 h-screen md:h-full w-screen md:w-full lg:static shrink-1 justify-self-end flex justify-end pointer-events-none">
       <div
         ref={containerRef}
         className={cn(
@@ -200,57 +201,83 @@ export const FlightDetail = () => {
                   </time>
                 </div>
               </div>
-
-              <div className="grid grid-cols-4 gap-1">
-                <button
-                  data-ignore-swipe
+              <div className="grid grid-cols-2 gap-1 relative mb-2.5">
+                <div
                   className={cn(
-                    'gap-2 p-4 rounded-l-2xl text-xl',
-                    styles.textPrimary,
-                    styles.flexCenter,
-                    styles.backgroundPrimary
+                    'col-span-2 bg-[#FFFFFF1A] p-4 rounded-t-2xl',
+                    styles.backgroundSecondary
                   )}
                 >
-                  <Icon name="route" />
-                  Route
-                </button>
-                <button
-                  data-ignore-swipe
+                  <h3 className={cn('text-xl', styles.textPrimary)}>
+                    Flight information
+                  </h3>
+                </div>
+                <div
                   className={cn(
-                    'gap-2 p-4 text-xl',
-                    styles.textPrimary,
-                    styles.flexCenter,
-                    styles.backgroundPrimary
+                    'h-16 px-4 py-6',
+                    styles.flexBetween,
+                    styles.backgroundPrimary,
+                    styles.colSpan
                   )}
                 >
-                  <Icon name="follow" />
-                  Follow
-                </button>
-                <button
-                  data-ignore-swipe
+                  <div
+                    className={cn('text-xl md:hidden', styles.textSecondary)}
+                  >
+                    Plane
+                  </div>
+                  <div className={cn('text-xl', styles.textPrimary)}>
+                    {targetFlight.airplane.name}
+                  </div>
+                </div>
+                <div
                   className={cn(
-                    'gap-2 p-4 text-xl',
-                    styles.textPrimary,
-                    styles.flexCenter,
-                    styles.backgroundPrimary
+                    'h-16 px-4 py-6',
+                    styles.flexBetween,
+                    styles.backgroundPrimary,
+                    styles.colSpan
                   )}
                 >
-                  <Icon name="shared" />
-                  Share
-                </button>
-                <button
-                  data-ignore-swipe
+                  <div
+                    className={cn('text-xl md:hidden', styles.textSecondary)}
+                  >
+                    Country
+                  </div>
+                  <div className={cn('text-xl', styles.textPrimary)}>
+                    🇮🇪 Ireland
+                  </div>
+                </div>
+                <div
                   className={cn(
-                    'gap-2 p-4 rounded-r-2xl text-xl',
-                    styles.textPrimary,
-                    styles.flexCenter,
-                    styles.backgroundPrimary
+                    'h-16 px-4 py-6 rounded-bl-none md:rounded-bl-2xl',
+                    styles.flexBetween,
+                    styles.backgroundPrimary,
+                    styles.colSpan
                   )}
                 >
-                  <Icon name="more" />
-                  More
-                </button>
+                  <div className={cn('text-xl', styles.textSecondary)}>
+                    Speed
+                  </div>
+                  <div className={cn('text-xl', styles.textPrimary)}>
+                    {targetFlight.route.speed} km/h
+                  </div>
+                </div>
+                <div
+                  className={cn(
+                    'h-16 px-4 py-6 rounded-b-2xl md:rounded-bl-none md:rounded-br-2xl ',
+                    styles.flexBetween,
+                    styles.backgroundPrimary,
+                    styles.colSpan
+                  )}
+                >
+                  <div className={cn('text-xl', styles.textSecondary)}>
+                    Altitude
+                  </div>
+                  <div className={cn('text-xl', styles.textPrimary)}>
+                    {targetFlight.route.altitude} m
+                  </div>
+                </div>
               </div>
+              <DetailControls />
             </div>
           </>
         )}

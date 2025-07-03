@@ -15,6 +15,7 @@ import {
   PlaneIcon,
   ProfileIcon,
   RouteIcon,
+  SearchIcon,
   SeparatorPlaneIcon,
   SharedIcon,
   SunIcon
@@ -36,6 +37,7 @@ const config = {
   plane: PlaneIcon,
   profile: ProfileIcon,
   route: RouteIcon,
+  search: SearchIcon,
   separatorPlane: SeparatorPlaneIcon,
   shared: SharedIcon,
   sun: SunIcon
