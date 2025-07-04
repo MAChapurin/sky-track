@@ -5,6 +5,7 @@ import { ProgressLine } from './progress-line'
 import { CloseButton } from './close-button'
 import { ScrollContainer } from '@/shared/ui'
 import { DetailControls } from './controls'
+import { FavoritesButton } from '@/features/favorites-button/ui/favorites-button'
 
 const styles = {
   flexCenter: 'flex flex-col items-center justify-center',
@@ -32,9 +33,11 @@ export const FlightDetail = () => {
       >
         {targetFlight && (
           <>
-            <div className="min-h-90 bg-gradient-to-r from-[#336699] to-[#8ABFFF] p-5 snap-start">
+            <div className="relative min-h-90 bg-gradient-to-r from-[#336699] to-[#8ABFFF] p-5 snap-start">
+              <div className="absolute bottom-1 left-1">
+                <FavoritesButton id={targetFlight.airline} />
+              </div>
               <div
-                data-ignore-swipe
                 className={cn(
                   'flex items-center justify-between  p-5 rounded-2xl',
                   styles.backgroundFull

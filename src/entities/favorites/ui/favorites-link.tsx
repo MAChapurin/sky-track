@@ -5,16 +5,28 @@ import { Link } from 'react-router-dom'
 
 export const FavoritesLink = () => {
   const { favorites } = useAppSelector(state => state.favoritesReducer)
+  const count = favorites.length
+
   return (
     <Link
-      className="w-10 h-10 bg-primary dark:bg-primary-dark transition-colors p-2 rounded flex flex-col items-center justify-center animate-fade-left"
       to={PATHNAMES.FAVORITES}
+      className="relative w-10 h-10 bg-primary dark:bg-primary-dark transition-colors p-2 rounded flex items-center justify-center animate-fade-left"
+      aria-label={`Favorites (${count})`}
     >
       <Icon
         name="favorites"
-        className="transition-colors text-foreground dark:text-foreground-dark"
+        className="text-foreground dark:text-foreground-dark transition-colors"
+        aria-hidden="true"
       />
-      {favorites.length}
+      {count > 0 && (
+        <span
+          aria-live="polite"
+          aria-atomic="true"
+          className="absolute top-0 right-0 -mt-1 -mr-1 flex items-center justify-center rounded-full bg-accent dark:bg-accent-dark text-background dark:text-background-dark text-xs font-semibold min-w-[18px] h-5 px-1 leading-none select-none transition-colors"
+        >
+          {count}
+        </span>
+      )}
     </Link>
   )
 }

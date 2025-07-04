@@ -1,22 +1,23 @@
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { FavoritesButton } from '@/features/favorites-button/ui/favorites-button'
 import { PlaneIcon } from '@/shared/ui/icons/plane-icon'
-import { FLIGHTS, SEARCH_FLIGHTS_VALUES } from '@/shared/db/fligths.data'
+import { SEARCH_FLIGHTS_VALUES } from '@/shared/db/fligths.data'
 import { LiveSearch } from '@/features/live-search/ui/live-search'
 import { ScrollContainer } from '@/shared/ui'
 import { KEY_BOARDS, SEARCH_PARAMS } from '@/shared/config'
+import type { IFlight } from '@/shared/types'
 
-export const FlightList = () => {
+export const FlightList = ({ list }: { list: IFlight[] }) => {
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()
   const filterValue =
     searchParams.get(SEARCH_PARAMS.SEARCH)?.toLowerCase() ?? ''
 
   const filteredFlights = filterValue
-    ? FLIGHTS.filter(flight =>
+    ? list.filter(flight =>
         flight.from?.city.toLowerCase().includes(filterValue)
       )
-    : FLIGHTS
+    : list
 
   return (
     <ScrollContainer className="w-full md:flex-row-reverse md:justify-end md:flex gap-4 relative lg:col-span-2">
@@ -30,8 +31,8 @@ export const FlightList = () => {
         {filteredFlights.map((el, i) => (
           <li
             key={el.airline}
-            className="snap-start animate-jump-in animate-once animate-duration-300"
-            style={{ animationDelay: `${100 * i}ms` }}
+            className="snap-start animate-fade-up"
+            style={{ animationDelay: `${50 * i}ms` }}
           >
             <article
               className="w-full min-h-50 rounded-2xl cursor-pointer focus-within:p-0.5 p-0.5 focus:outline-0 focus-within:bg-gradient-to-r focus-within:from-[#E44948] focus-within:to-[#FBA316] overflow-hidden transition-colors"
