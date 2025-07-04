@@ -1,12 +1,14 @@
-import { LiveSearch } from '@/features/live-search/ui/live-search'
-import { SEARCH_PARAMS } from '@/shared/config'
-import { FLIGHTS, SEARCH_FLIGHTS_VALUES } from '@/shared/db/fligths.data'
-import { ScrollContainer } from '@/shared/ui'
+import { useNavigate, useSearchParams } from 'react-router-dom'
+import { FavoritesButton } from '@/features/favorites-button/ui/favorites-button'
 import { PlaneIcon } from '@/shared/ui/icons/plane-icon'
-import { Link, useSearchParams } from 'react-router-dom'
+import { FLIGHTS, SEARCH_FLIGHTS_VALUES } from '@/shared/db/fligths.data'
+import { LiveSearch } from '@/features/live-search/ui/live-search'
+import { ScrollContainer } from '@/shared/ui'
+import { KEY_BOARDS, SEARCH_PARAMS } from '@/shared/config'
 
 export const FlightList = () => {
   const [searchParams] = useSearchParams()
+  const navigate = useNavigate()
   const filterValue =
     searchParams.get(SEARCH_PARAMS.SEARCH)?.toLowerCase() ?? ''
 
@@ -21,15 +23,29 @@ export const FlightList = () => {
       <div className="sticky top-0 snap-start z-10 shrink-0 mb-8">
         <LiveSearch items={SEARCH_FLIGHTS_VALUES.map(el => el.label)} />
       </div>
-      <ul className="flex flex-col gap-4 w-full lg:w-100 h-fit mb-8">
-        {filteredFlights.map(el => (
-          <li key={el.airline} className="snap-start">
-            <div className="w-full min-h-50 rounded-2xl focus-within:p-0.5 p-0.5 focus-within:bg-gradient-to-r focus-within:from-[#E44948] focus-within:to-[#FBA316] overflow-hidden transition-colors">
-              <Link
-                to={'?airline=' + el.airline}
-                className="h-50 focus:outline-0 rounded-2xl flex flex-col text-foreground dark:text-foreground-dark bg-primary dark:bg-primary-dark p-4 gap-9 transition-colors"
-              >
-                <div className="flex items-center mb-auto">
+      <ul
+        role="list"
+        className="flex flex-col gap-4 w-full lg:w-100 h-fit mb-8"
+      >
+        {filteredFlights.map((el, i) => (
+          <li
+            key={el.airline}
+            className="snap-start animate-jump-in animate-once animate-duration-300"
+            style={{ animationDelay: `${100 * i}ms` }}
+          >
+            <article
+              className="w-full min-h-50 rounded-2xl cursor-pointer focus-within:p-0.5 p-0.5 focus:outline-0 focus-within:bg-gradient-to-r focus-within:from-[#E44948] focus-within:to-[#FBA316] overflow-hidden transition-colors"
+              onClick={() => navigate(`?airline=${el.airline}`)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={e => {
+                if (e.key === KEY_BOARDS.Enter || e.key === KEY_BOARDS.Space) {
+                  navigate(`?airline=${el.airline}`)
+                }
+              }}
+            >
+              <div className="h-50 focus:outline-0 rounded-2xl flex flex-col justify-between text-foreground dark:text-foreground-dark bg-primary dark:bg-primary-dark p-4 transition-colors">
+                <div className="flex items-center">
                   <div className="flex items-center gap-2 mr-auto">
                     <div className="w-8 h-8 rounded-4xl border-none overflow-clip bg-white">
                       <img
@@ -43,6 +59,14 @@ export const FlightList = () => {
                   <div className="rounded-xl p-1 bg-secondary dark:bg-secondary-dark">
                     {el.aircraftReg}
                   </div>
+                </div>
+                <div
+                  className="w-fit ml-auto flex items-center justify-end"
+                  onClick={e => {
+                    e.stopPropagation()
+                  }}
+                >
+                  <FavoritesButton id={el.airline} />
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="flex flex-col gap-2">
@@ -61,8 +85,8 @@ export const FlightList = () => {
                     <div className="text-5xl">{el.to.code}</div>
                   </div>
                 </div>
-              </Link>
-            </div>
+              </div>
+            </article>
           </li>
         ))}
       </ul>

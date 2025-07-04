@@ -1,6 +1,7 @@
 export * from './arrow-down-icon'
 export * from './arrow-group-icon'
 export * from './back-icon'
+export * from './bookmark-icon'
 export * from './checked-icon'
 export * from './close-icon'
 export * from './columns-icon'
