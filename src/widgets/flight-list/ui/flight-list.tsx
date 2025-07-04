@@ -3,7 +3,7 @@ import { FavoritesButton } from '@/features/favorites-button/ui/favorites-button
 import { PlaneIcon } from '@/shared/ui/icons/plane-icon'
 import { SEARCH_FLIGHTS_VALUES } from '@/shared/db/fligths.data'
 import { LiveSearch } from '@/features/live-search/ui/live-search'
-import { ScrollContainer } from '@/shared/ui'
+import { HighlightMatch, ScrollContainer } from '@/shared/ui'
 import { KEY_BOARDS, SEARCH_PARAMS } from '@/shared/config'
 import type { IFlight } from '@/shared/types'
 
@@ -71,7 +71,12 @@ export const FlightList = ({ list }: { list: IFlight[] }) => {
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="flex flex-col gap-2">
-                    <div className="text-base">{el.from.city}</div>
+                    <div className="text-base">
+                      <HighlightMatch
+                        item={el.from?.city}
+                        query={filterValue}
+                      />
+                    </div>
                     <div className="text-5xl">{el.from.code}</div>
                   </div>
                   <div className="w-full h-1 rounded-2xl flex relative">

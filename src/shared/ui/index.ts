@@ -1,2 +1,5 @@
 export * from './icon'
 export * from './scroll-container'
+export * from './highlight-match'
+export * from './dropdown'
+export * from './scroll-container'
