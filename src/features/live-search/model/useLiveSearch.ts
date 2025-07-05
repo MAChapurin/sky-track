@@ -1,4 +1,5 @@
 import { KEY_BOARDS, SEARCH_PARAMS } from '@/shared/config'
+import { useClickOutside } from '@/shared/hooks'
 
 import {
   useState,
@@ -17,7 +18,7 @@ export const useLiveSearch = (items: string[]) => {
   const deferredQuery = useDeferredValue(query)
   const [isOpen, setIsOpen] = useState(false)
   const [activeIndex, setActiveIndex] = useState(0)
-  const wrapperRef = useRef<HTMLDivElement>(null)
+  const wrapperRef = useRef<HTMLDivElement>(null!)
   const listRef = useRef<HTMLUListElement>(null)
   const [, setSearchParams] = useSearchParams()
 
@@ -40,18 +41,8 @@ export const useLiveSearch = (items: string[]) => {
     setIsOpen(true)
   }
 
-  const highlightMatch = (item: string) => {
-    const i = item.toLowerCase().indexOf(query.toLowerCase())
-    if (i === -1 || !query) return item
-    return (
-      <>
-        {item.slice(0, i)}
-        <span className="text-accent dark:text-accent-dark bg-muted dark:bg-muted-dark font-semibold">
-          {item.slice(i, i + query.length)}
-        </span>
-        {item.slice(i + query.length)}
-      </>
-    )
+  const onClose = () => {
+    setIsOpen(false)
   }
 
   const onFocus = () => {
@@ -83,18 +74,7 @@ export const useLiveSearch = (items: string[]) => {
     }
   }
 
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (
-        wrapperRef.current &&
-        !wrapperRef.current.contains(e.target as Node)
-      ) {
-        setIsOpen(false)
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [])
+  useClickOutside(wrapperRef, onClose)
 
   useEffect(() => {
     if (!listRef.current) return
@@ -113,7 +93,6 @@ export const useLiveSearch = (items: string[]) => {
       prev.set(SEARCH_PARAMS.SEARCH, query)
       return prev
     })
-    // console.log(deferredQuery)
   }, [query, setSearchParams])
 
   return {
@@ -121,7 +100,6 @@ export const useLiveSearch = (items: string[]) => {
     filtered,
     handleKeyDown,
     handleSelect,
-    highlightMatch,
     listRef,
     isOpen,
     onChange,

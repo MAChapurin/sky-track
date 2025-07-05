@@ -1,4 +1,4 @@
-import { Icon } from '@/shared/ui'
+import { HighlightMatch, Icon } from '@/shared/ui'
 import { cn } from '@/shared/utils'
 
 import { useLiveSearch } from '../model/useLiveSearch'
@@ -14,7 +14,6 @@ export const LiveSearch = ({ items }: LiveSearchProps) => {
     filtered,
     handleKeyDown,
     handleSelect,
-    highlightMatch,
     listRef,
     isOpen,
     onChange,
@@ -104,7 +103,7 @@ export const LiveSearch = ({ items }: LiveSearchProps) => {
                   : 'hover:bg-accent hover:text-background dark:hover:text-background-dark'
               )}
             >
-              {highlightMatch(item)}
+              <HighlightMatch item={item} query={query} />
             </li>
           ))}
         </ul>

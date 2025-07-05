@@ -1,12 +1,12 @@
 import { Icon } from '@/shared/ui/icon'
 import { cn } from '@/shared/utils/cn'
-import { useFlightDetail } from '../model/use-flight-detail'
 
 import { CloseButton } from './close-button'
 import { ScrollContainer } from '@/shared/ui'
 import { DetailControls } from './controls'
 import { FavoritesButton } from '@/features/favorites-button/ui/favorites-button'
 import { ProgressLine } from '@/features/progress-line'
+import { useFlightDetail } from '../model/useFlightDetail'
 
 const styles = {
   flexCenter: 'flex flex-col items-center justify-center',
