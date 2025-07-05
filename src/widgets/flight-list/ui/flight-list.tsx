@@ -1,11 +1,11 @@
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { FavoritesButton } from '@/features/favorites-button/ui/favorites-button'
-import { PlaneIcon } from '@/shared/ui/icons/plane-icon'
 import { SEARCH_FLIGHTS_VALUES } from '@/shared/db/fligths.data'
 import { LiveSearch } from '@/features/live-search/ui/live-search'
 import { HighlightMatch, ScrollContainer } from '@/shared/ui'
 import { KEY_BOARDS, SEARCH_PARAMS } from '@/shared/config'
 import type { IFlight } from '@/shared/types'
+import { ProgressLine } from '@/features/progress-line'
 
 export const FlightList = ({ list }: { list: IFlight[] }) => {
   const [searchParams] = useSearchParams()
@@ -79,13 +79,7 @@ export const FlightList = ({ list }: { list: IFlight[] }) => {
                     </div>
                     <div className="text-5xl">{el.from.code}</div>
                   </div>
-                  <div className="w-full h-1 rounded-2xl flex relative">
-                    <div className="w-1/2 h-full bg-gradient-to-r from-[#E44948] to-[#FBA316] rounded-l-2xl"></div>
-                    <div className="absolute -top-8 translate-y-full left-1/2 -translate-x-1/2">
-                      <PlaneIcon />
-                    </div>
-                    <div className="w-1/2 h-full bg-secondary dark:bg-secondary-dark rounded-r-2xl transition-colors"></div>
-                  </div>
+                  <ProgressLine progress={el.progress} />
                   <div className="flex flex-col gap-2">
                     <div className="text-base">{el.to.city}</div>
                     <div className="text-5xl">{el.to.code}</div>

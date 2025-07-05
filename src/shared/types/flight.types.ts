@@ -16,6 +16,15 @@ export interface IFlightLocation {
   code: string
 }
 
+export type BuildRange<
+  N extends number,
+  Result extends number[] = []
+> = Result['length'] extends N
+  ? Result[number] | N
+  : BuildRange<N, [...Result, Result['length']]>
+
+export type Percent = BuildRange<100>
+
 export interface IFlight {
   airplane: IFlightAirplane
   route: IFlightRoute
@@ -25,4 +34,5 @@ export interface IFlight {
   aircraftReg: string
   from: IFlightLocation
   to: IFlightLocation
+  progress: Percent
 }

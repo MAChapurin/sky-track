@@ -5,6 +5,7 @@ export const FLIGHTS: IFlight[] = [
     logo: '/logos/turkish.svg',
     airline: 'TK143',
     aircraftReg: 'TC-JFP',
+    progress: 75,
     from: {
       city: 'Sofia',
       country: 'Bulgaria',
@@ -33,6 +34,7 @@ export const FLIGHTS: IFlight[] = [
     logo: '/logos/ryanair.svg',
     airline: 'RN1782',
     aircraftReg: 'D-AISP',
+    progress: 50,
     from: {
       city: 'Dublin',
       country: 'Ireland',
@@ -61,6 +63,7 @@ export const FLIGHTS: IFlight[] = [
     logo: '/logos/s7.svg',
     airline: 'S7124',
     aircraftReg: 'RA-73415',
+    progress: 40,
     from: {
       city: 'Nice',
       country: 'France',
@@ -89,6 +92,7 @@ export const FLIGHTS: IFlight[] = [
     logo: '/logos/swiss.svg',
     airline: 'LX318',
     aircraftReg: 'HB-JHK',
+    progress: 80,
     from: {
       city: 'Porto',
       country: 'Portugal',
@@ -117,6 +121,7 @@ export const FLIGHTS: IFlight[] = [
     logo: '/logos/lufthansa.svg',
     airline: 'LH401',
     aircraftReg: 'D-AIXD',
+    progress: 60,
     from: {
       city: 'Burgas',
       country: 'Bulgaria',

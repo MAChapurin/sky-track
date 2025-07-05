@@ -1,11 +1,12 @@
 import { Icon } from '@/shared/ui/icon'
 import { cn } from '@/shared/utils/cn'
 import { useFlightDetail } from '../model/use-flight-detail'
-import { ProgressLine } from './progress-line'
+
 import { CloseButton } from './close-button'
 import { ScrollContainer } from '@/shared/ui'
 import { DetailControls } from './controls'
 import { FavoritesButton } from '@/features/favorites-button/ui/favorites-button'
+import { ProgressLine } from '@/features/progress-line'
 
 const styles = {
   flexCenter: 'flex flex-col items-center justify-center',
@@ -23,11 +24,11 @@ export const FlightDetail = () => {
     useFlightDetail()
 
   return (
-    <ScrollContainer className="fixed z-100 left-0 top-0 h-screen md:h-full w-screen md:w-full lg:static shrink-1 justify-self-end flex justify-end pointer-events-none">
+    <ScrollContainer className="fixed z-100 left-0 top-0 h-[100dvh] md:h-full w-screen md:w-full lg:static shrink-1 justify-self-end flex justify-end pointer-events-none">
       <div
         ref={containerRef}
         className={cn(
-          'w-full md:max-w-130 md:rounded-2xl text-white transition-transform duration-300 pointer-events-auto overflow-x-hidden overflow-y-auto z-50',
+          'w-full md:max-w-130 md:rounded-2xl text-white transition-transform duration-300 pointer-events-auto overflow-x-hidden overflow-y-auto z-50 scrollbar-none',
           isVisible ? 'translate-x-0' : 'translate-x-full'
         )}
       >
@@ -119,7 +120,10 @@ export const FlightDetail = () => {
                     styles.backgroundPrimary
                   )}
                 >
-                  <ProgressLine className="hidden md:flex" />
+                  <ProgressLine
+                    progress={targetFlight.progress}
+                    className="hidden md:flex"
+                  />
                   <div
                     className={cn(
                       'mt-auto flex-col gap-6 md:gap-0 md:flex-row',
@@ -129,7 +133,10 @@ export const FlightDetail = () => {
                     <div className={cn('text-xl', styles.textSecondary)}>
                       2 715 km · 3h 1m
                     </div>
-                    <ProgressLine className="md:hidden" />
+                    <ProgressLine
+                      progress={targetFlight.progress}
+                      className="md:hidden"
+                    />
                     <div className={cn('text-xl', styles.textSecondary)}>
                       2 715 km · 3h 1m
                     </div>
