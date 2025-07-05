@@ -27,7 +27,7 @@ export const FlightDetail = () => {
       <div
         ref={containerRef}
         className={cn(
-          'w-full h-fit md:max-w-130 md:rounded-2xl text-white transition-transform duration-300 pointer-events-auto overflow-x-hidden overflow-y-auto z-50',
+          'w-full md:max-w-130 md:rounded-2xl text-white transition-transform duration-300 pointer-events-auto overflow-x-hidden overflow-y-auto z-50',
           isVisible ? 'translate-x-0' : 'translate-x-full'
         )}
       >
