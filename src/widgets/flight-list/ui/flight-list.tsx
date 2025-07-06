@@ -35,7 +35,7 @@ export const FlightList = ({ list }: { list: IFlight[] }) => {
             style={{ animationDelay: `${50 * i}ms` }}
           >
             <article
-              className="w-full min-h-50 rounded-2xl cursor-pointer focus-within:p-0.5 p-0.5 focus:outline-0 focus-within:bg-gradient-to-r focus-within:from-[#E44948] focus-within:to-[#FBA316] overflow-hidden transition-colors"
+              className="w-full min-h-50 rounded-2xl cursor-pointer focus-within:p-0.5 p-0.5 focus:outline-0 focus-within:bg-gradient-to-r focus-within:outline-none focus:outline-none focus-within:from-[#E44948] focus-within:to-[#FBA316] overflow-hidden transition-colors"
               onClick={() => navigate(`?airline=${el.airline}`)}
               role="button"
               tabIndex={0}

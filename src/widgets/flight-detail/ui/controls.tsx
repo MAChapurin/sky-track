@@ -12,53 +12,37 @@ const styles = {
   colSpan: 'col-span-2 md:col-span-1'
 } as const
 
+const baseButtonClasses = cn(
+  'gap-2 p-4 text-xl',
+  styles.textPrimary,
+  styles.flexCenter,
+  styles.backgroundPrimary,
+  'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent'
+)
+
 export const DetailControls = () => {
   return (
     <div className="grid grid-cols-4 gap-1">
       <button
+        type="button"
         data-ignore-swipe
-        className={cn(
-          'gap-2 p-4 rounded-l-2xl text-xl',
-          styles.textPrimary,
-          styles.flexCenter,
-          styles.backgroundPrimary
-        )}
+        className={cn(baseButtonClasses, 'rounded-l-2xl')}
       >
         <Icon name="route" />
         Route
       </button>
-      <button
-        data-ignore-swipe
-        className={cn(
-          'gap-2 p-4 text-xl',
-          styles.textPrimary,
-          styles.flexCenter,
-          styles.backgroundPrimary
-        )}
-      >
+      <button type="button" data-ignore-swipe className={baseButtonClasses}>
         <Icon name="follow" />
         Follow
       </button>
-      <button
-        data-ignore-swipe
-        className={cn(
-          'gap-2 p-4 text-xl',
-          styles.textPrimary,
-          styles.flexCenter,
-          styles.backgroundPrimary
-        )}
-      >
+      <button type="button" data-ignore-swipe className={baseButtonClasses}>
         <Icon name="shared" />
         Share
       </button>
       <button
+        type="button"
         data-ignore-swipe
-        className={cn(
-          'gap-2 p-4 rounded-r-2xl text-xl',
-          styles.textPrimary,
-          styles.flexCenter,
-          styles.backgroundPrimary
-        )}
+        className={cn(baseButtonClasses, 'rounded-r-2xl')}
       >
         <Icon name="more" />
         More

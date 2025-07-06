@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useReducer, useRef } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { FLIGHTS } from '@/shared/db/fligths.data'
-import { SEARCH_PARAMS } from '@/shared/config'
+import { KEY_BOARDS, SEARCH_PARAMS } from '@/shared/config'
 import { ActionTypes, type Action, type State } from '../types'
+import { useKeyDown } from '@/shared/hooks'
 
 const initialState: State = {
   targetFlight: undefined,
@@ -62,6 +63,8 @@ export const useFlightDetail = () => {
     el.addEventListener('transitionend', onTransitionEnd)
     dispatch({ type: ActionTypes.SET_ANIMATION, isClosing: true })
   }, [cleanup])
+
+  useKeyDown(KEY_BOARDS.Escape, closeWithAnimation)
 
   useEffect(() => {
     if (targetAirline) {

@@ -34,6 +34,7 @@ body {
 
 a {
   text-decoration: inherit;
+  outline: 1px solid transparent;
 }
 
 body {
@@ -45,6 +46,8 @@ body {
 button {
   font-family: inherit;
   cursor: pointer;
+  outline: none;
+  outline: 1px solid transparent;
 }
 
 .scrollbar-none::-webkit-scrollbar {
@@ -54,4 +57,14 @@ button {
 .scrollbar-none {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+a:focus-visible {
+  outline: 1px solid light-dark(var(--color-accent), var(--color-accent-dark));
+  outline-offset: 2px;
 }

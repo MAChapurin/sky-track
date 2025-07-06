@@ -24,7 +24,6 @@ export const useBurgerTrigger = () => {
       CUSTOM_EVENTS.CLOSE_MENU,
       onClose
     )
-
     return () => {
       unSubscribeClose()
     }

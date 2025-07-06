@@ -26,6 +26,9 @@ export const FlightDetail = () => {
   return (
     <ScrollContainer className="fixed z-100 left-0 top-0 h-[100dvh] md:h-full w-screen md:w-full lg:static shrink-1 justify-self-end flex justify-end pointer-events-none">
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="flight-detail-title"
         ref={containerRef}
         className={cn(
           'w-full md:max-w-130 md:rounded-2xl text-white transition-transform duration-300 pointer-events-auto overflow-x-hidden overflow-y-auto z-50 scrollbar-none',
@@ -45,9 +48,9 @@ export const FlightDetail = () => {
                 )}
               >
                 <div className="flex flex-col">
-                  <div className="text-accent text-3xl">
+                  <h2 id="flight-detail-title" className="text-accent text-3xl">
                     {targetFlight.airline}
-                  </div>
+                  </h2>
                   <div
                     className={cn(
                       'text-xl transition-colors',
@@ -62,8 +65,11 @@ export const FlightDetail = () => {
               <img
                 loading="lazy"
                 src={targetFlight.airplane.image}
-                alt={targetFlight.airplane.name}
+                alt={`Plane: ${targetFlight.airplane.name}`}
                 title={targetFlight.airplane.name}
+                width={600}
+                height={300}
+                className="w-full h-auto rounded-xl"
               />
             </div>
 

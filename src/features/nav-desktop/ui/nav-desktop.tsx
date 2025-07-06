@@ -1,12 +1,18 @@
 import { PATHNAMES } from '@/shared/config'
 import { Icon } from '@/shared/ui/icon'
+import { cn } from '@/shared/utils'
 import { Link } from 'react-router-dom'
 
 export const NavDesktop = () => {
   return (
     <nav className="hidden lg:grid grid-cols-3 gap-1">
       <Link
-        className="animate-fade-left flex items-center bg-primary dark:bg-primary-dark transition-colors gap-2 p-2 rounded-l-2xl text-xl"
+        className={cn(
+          'animate-fade-left flex items-center bg-primary dark:bg-primary-dark transition-colors gap-2 p-2 rounded-l-2xl text-xl',
+          {
+            ['bg-accent dark:bg-accent-dark']: true
+          }
+        )}
         to={PATHNAMES.HOME}
       >
         <Icon name="home" /> Main
