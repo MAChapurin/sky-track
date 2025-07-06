@@ -10,7 +10,7 @@ export const Layout = () => {
         <div className="h-15 shrink-0 flex items-center mb-4">
           <Header />
         </div>
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 overflow-hidden">
           <Outlet />
         </div>
       </div>
