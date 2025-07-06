@@ -1,7 +1,6 @@
 import { FavoritesLink } from '@/entities/favorites'
 import { PATHNAMES } from '@/shared/config'
-import { Icon } from '@/shared/ui'
-import { Link } from 'react-router-dom'
+import { CustomNavLink, Icon } from '@/shared/ui'
 
 export const NavMobile = () => {
   return (
@@ -9,31 +8,19 @@ export const NavMobile = () => {
       <h2 className="p-2 text-balance rounded-t-2xl text-2xl font-bold bg-secondary dark:bg-secondary-dark transition-colors">
         Navigation
       </h2>
-      <Link
-        className="flex items-center bg-primary dark:bg-primary-dark transition-colors gap-2 p-2  text-xl"
-        to={PATHNAMES.HOME}
-      >
+      <CustomNavLink to={PATHNAMES.HOME}>
         <Icon name="home" /> Main
-      </Link>
-      <Link
-        className="flex items-center bg-primary dark:bg-primary-dark transition-colors gap-2 p-2 text-xl"
-        to={PATHNAMES.RACES}
-      >
-        <Icon name="columns" /> Races
-      </Link>
-      <Link
-        to={PATHNAMES.ABOUT}
-        className="flex items-center bg-primary dark:bg-primary-dark transition-colors gap-2 p-2 text-xl"
-      >
+      </CustomNavLink>
+      <CustomNavLink to={PATHNAMES.RACES}>
+        <Icon name="columns" className="h-4 w-4" /> Races
+      </CustomNavLink>
+      <CustomNavLink to={PATHNAMES.ABOUT}>
         <Icon name="logo" className="h-4 w-4" /> About
-      </Link>
+      </CustomNavLink>
       <FavoritesLink isMobileVariant />
-      <Link
-        to={PATHNAMES.PROFILE}
-        className="flex items-center bg-primary dark:bg-primary-dark transition-colors gap-2 p-2 rounded-b-2xl text-xl"
-      >
+      <CustomNavLink to={PATHNAMES.PROFILE} className="rounded-b-2xl">
         <Icon name="profile" className="h-4 w-4" /> Profile
-      </Link>
+      </CustomNavLink>
     </nav>
   )
 }

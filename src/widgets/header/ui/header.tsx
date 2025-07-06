@@ -1,7 +1,7 @@
 import { FavoritesLink } from '@/entities/favorites'
 import { BurgerTrigger, NavDesktop } from '@/features'
 import { PATHNAMES } from '@/shared/config'
-import { Icon } from '@/shared/ui'
+import { CustomNavLink, Icon } from '@/shared/ui'
 import { Controls } from '@/widgets/controls'
 import { MobileMenu } from '@/widgets/mobile-menu/ui/mobile-menu'
 import { Link } from 'react-router-dom'
@@ -26,17 +26,16 @@ export const Header = () => {
       >
         <NavDesktop />
         <FavoritesLink />
-        <Link
+        <CustomNavLink
           to={PATHNAMES.PROFILE}
-          className="w-10 h-10 bg-primary dark:bg-primary-dark transition-colors p-2 rounded flex items-center justify-center animate-fade-left animate-delay-100"
-          aria-label="Profile"
+          className="justify-center animate-fade-left animate-delay-100 rounded"
         >
           <Icon
             name="profile"
             className="text-foreground dark:text-foreground-dark"
             aria-hidden="true"
           />
-        </Link>
+        </CustomNavLink>
         <Controls />
       </nav>
       <div className="lg:hidden flex items-center gap-2">

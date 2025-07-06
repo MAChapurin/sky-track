@@ -1,7 +1,8 @@
 import { PATHNAMES } from '@/shared/config'
 import { useAppSelector } from '@/shared/hooks'
-import { Icon } from '@/shared/ui'
-import { Link } from 'react-router-dom'
+import { CustomNavLink, Icon } from '@/shared/ui'
+import { NavLink } from 'react-router'
+import { cn } from '@/shared/utils'
 
 export const FavoritesLink = ({
   isMobileVariant = false
@@ -13,10 +14,7 @@ export const FavoritesLink = ({
 
   if (isMobileVariant) {
     return (
-      <Link
-        to={PATHNAMES.FAVORITES}
-        className="flex items-center bg-primary dark:bg-primary-dark transition-colors gap-2 p-2 text-xl"
-      >
+      <CustomNavLink to={PATHNAMES.FAVORITES} className="p-1">
         <Icon name="bookmark" className="h-4 w-4" /> Favorites{' '}
         <span
           aria-live="polite"
@@ -25,14 +23,21 @@ export const FavoritesLink = ({
         >
           {count}
         </span>
-      </Link>
+      </CustomNavLink>
     )
   }
 
   return (
-    <Link
+    <NavLink
       to={PATHNAMES.FAVORITES}
-      className="relative w-10 h-10 bg-primary dark:bg-primary-dark transition-colors p-2 rounded flex items-center justify-center animate-fade-left"
+      className={({ isActive }) =>
+        cn(
+          'relative w-10 h-10 bg-primary dark:bg-primary-dark transition-colors p-2 rounded flex items-center justify-center animate-fade-left',
+          {
+            ['bg-accent dark:bg-accent-dark']: isActive
+          }
+        )
+      }
       aria-label={`Favorites (${count})`}
     >
       <Icon
@@ -44,11 +49,11 @@ export const FavoritesLink = ({
         <span
           aria-live="polite"
           aria-atomic="true"
-          className="absolute top-0 right-0 -mt-1 -mr-1 flex items-center justify-center rounded-full bg-accent dark:bg-accent-dark text-background dark:text-background-dark text-xs font-semibold min-w-[18px] h-5 px-1 leading-none select-none transition-colors"
+          className="absolute top-0 right-0 -mt-1 -mr-1 flex items-center justify-center rounded-full bg-foreground dark:bg-foreground-dark text-background dark:text-background-dark text-xs font-semibold min-w-[18px] h-5 px-1 leading-none select-none transition-colors"
         >
           {count}
         </span>
       )}
-    </Link>
+    </NavLink>
   )
 }
