@@ -1,13 +1,26 @@
-import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
+import { STORAGE_KEYS } from '@/shared/config'
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
 export interface FavoritesState {
   favorites: string[]
 }
 
-const initialState: FavoritesState = {
-  favorites: []
+const getInitialFavoritesState = (): FavoritesState => {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEYS.FAVORITES)
+    if (stored) {
+      const parsed = JSON.parse(stored)
+      if (Array.isArray(parsed.favorites)) {
+        return { favorites: parsed.favorites }
+      }
+    }
+  } catch {
+    return { favorites: [] }
+  }
+  return { favorites: [] }
 }
+
+const initialState: FavoritesState = getInitialFavoritesState()
 
 export const favoritesSlice = createSlice({
   name: '@favorites',
@@ -23,10 +36,9 @@ export const favoritesSlice = createSlice({
       state.favorites = state.favorites.filter(item => item !== action.payload)
     },
     toogleFavoritesItem: (state, action: PayloadAction<string>) => {
-      if (state.favorites.includes(action.payload)) {
-        state.favorites = state.favorites.filter(
-          item => item !== action.payload
-        )
+      const index = state.favorites.indexOf(action.payload)
+      if (index !== -1) {
+        state.favorites.splice(index, 1)
       } else {
         state.favorites.push(action.payload)
       }

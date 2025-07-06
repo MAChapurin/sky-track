@@ -1,3 +1,4 @@
 export const STORAGE_KEYS = {
-  THEME: 'theme'
+  THEME: 'theme',
+  FAVORITES: 'favorites_flights'
 } as const

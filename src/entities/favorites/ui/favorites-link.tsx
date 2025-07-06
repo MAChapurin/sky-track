@@ -8,7 +8,7 @@ export const FavoritesLink = ({
 }: {
   isMobileVariant?: boolean
 }) => {
-  const { favorites } = useAppSelector(state => state.favoritesReducer)
+  const { favorites } = useAppSelector(state => state.favorites)
   const count = favorites.length
 
   if (isMobileVariant) {

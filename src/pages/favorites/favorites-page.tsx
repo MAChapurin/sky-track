@@ -3,7 +3,7 @@ import { useAppSelector } from '@/shared/hooks'
 import { FlightDetail, FlightList, NavError } from '@/widgets'
 
 export const FavoritesPage = () => {
-  const { favorites } = useAppSelector(state => state.favoritesReducer)
+  const { favorites } = useAppSelector(state => state.favorites)
   const list = FLIGHTS.filter(flight => favorites.includes(flight.airline))
   if (favorites.length === 0) {
     return (

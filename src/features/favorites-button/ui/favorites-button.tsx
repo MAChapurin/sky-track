@@ -9,7 +9,7 @@ interface FavoritesButtonProps {
 
 export const FavoritesButton = ({ id }: FavoritesButtonProps) => {
   const dispatch = useAppDispatch()
-  const { favorites } = useAppSelector(state => state.favoritesReducer)
+  const { favorites } = useAppSelector(state => state.favorites)
   const isChecked = favorites.includes(id)
 
   const handleClick = () => {
