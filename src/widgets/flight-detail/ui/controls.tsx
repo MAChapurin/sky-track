@@ -1,24 +1,25 @@
+import { tv } from 'tailwind-variants'
 import { Icon } from '@/shared/ui'
-import { cn } from '@/shared/utils'
 
-const styles = {
-  flexCenter: 'flex flex-col items-center justify-center',
-  flexBetween: 'flex items-center justify-between',
-  textPrimary: 'text-foreground dark:text-foreground-dark transition-colors',
-  textSecondary: 'text-muted dark:text-muted-dark transition-colors',
-  backgroundFull: 'bg-background dark:bg-background-dark transition-colors',
-  backgroundPrimary: 'bg-primary dark:bg-primary-dark transition-colors',
-  backgroundSecondary: 'bg-secondary dark:bg-secondary-dark transition-colors',
-  colSpan: 'col-span-2 md:col-span-1'
-} as const
-
-const baseButtonClasses = cn(
-  'gap-2 p-4 text-xl',
-  styles.textPrimary,
-  styles.flexCenter,
-  styles.backgroundPrimary,
-  'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent'
-)
+const detailButton = tv({
+  base: [
+    'gap-2 p-4 text-xl',
+    'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent',
+    'flex flex-col items-center justify-center',
+    'bg-primary dark:bg-primary-dark',
+    'text-foreground dark:text-foreground-dark transition-colors'
+  ],
+  variants: {
+    rounded: {
+      left: 'rounded-l-2xl',
+      right: 'rounded-r-2xl',
+      none: ''
+    }
+  },
+  defaultVariants: {
+    rounded: 'none'
+  }
+})
 
 export const DetailControls = () => {
   return (
@@ -26,23 +27,23 @@ export const DetailControls = () => {
       <button
         type="button"
         data-ignore-swipe
-        className={cn(baseButtonClasses, 'rounded-l-2xl')}
+        className={detailButton({ rounded: 'left' })}
       >
         <Icon name="route" />
         Route
       </button>
-      <button type="button" data-ignore-swipe className={baseButtonClasses}>
+      <button type="button" data-ignore-swipe className={detailButton()}>
         <Icon name="follow" />
         Follow
       </button>
-      <button type="button" data-ignore-swipe className={baseButtonClasses}>
+      <button type="button" data-ignore-swipe className={detailButton()}>
         <Icon name="shared" />
         Share
       </button>
       <button
         type="button"
         data-ignore-swipe
-        className={cn(baseButtonClasses, 'rounded-r-2xl')}
+        className={detailButton({ rounded: 'right' })}
       >
         <Icon name="more" />
         More
