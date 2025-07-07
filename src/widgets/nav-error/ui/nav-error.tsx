@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 export const NavError = () => {
   const navigate = useNavigate()
   return (
-    <nav className="grid grid-cols-2 gap-1" aria-label="Error page navigation">
+    <nav className="grid grid-cols-2 gap-1" >
       <h2 className="col-span-2 p-4 text-balance rounded-t-2xl text-4xl font-bold bg-secondary dark:bg-secondary-dark transition-colors animate-fade-up animate-delay-250">
         Navigation
       </h2>
