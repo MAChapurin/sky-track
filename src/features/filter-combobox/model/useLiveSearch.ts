@@ -1,4 +1,8 @@
-import { KEY_BOARDS, SEARCH_PARAMS } from '@/shared/config'
+import {
+  KEY_BOARDS,
+  SEARCH_PARAMS,
+  type SearchParamsValueType
+} from '@/shared/config'
 import { useClickOutside } from '@/shared/hooks'
 
 import {
@@ -13,12 +17,17 @@ import {
 
 import { useSearchParams } from 'react-router-dom'
 
-export const useLiveSearch = (items: string[]) => {
+export const useLiveSearch = (
+  items: string[],
+  param: SearchParamsValueType
+) => {
   const [query, setQuery] = useState('')
   const deferredQuery = useDeferredValue(query)
   const [isOpen, setIsOpen] = useState(false)
   const [activeIndex, setActiveIndex] = useState(0)
+  const [selectedItem, setSelectedItem] = useState<string | null>(null)
   const wrapperRef = useRef<HTMLDivElement>(null!)
+  const inputRef = useRef<HTMLInputElement>(null!)
   const listRef = useRef<HTMLUListElement>(null)
   const [, setSearchParams] = useSearchParams()
 
@@ -29,8 +38,9 @@ export const useLiveSearch = (items: string[]) => {
 
   const handleSelect = (item: string) => {
     setQuery(item)
+    setSelectedItem(item)
     setSearchParams(prev => {
-      prev.set(SEARCH_PARAMS.SEARCH, item)
+      prev.set(param, item)
       return prev
     })
     setIsOpen(false)
@@ -49,8 +59,13 @@ export const useLiveSearch = (items: string[]) => {
     setIsOpen(true)
   }
 
+  const onTogle = () => {
+    setIsOpen(prev => !prev)
+  }
+
   const onClear = () => {
     setQuery('')
+    setSelectedItem(null)
     setSearchParams(prev => {
       prev.set(SEARCH_PARAMS.SEARCH, '')
       return prev
@@ -89,11 +104,25 @@ export const useLiveSearch = (items: string[]) => {
   }, [filtered])
 
   useEffect(() => {
-    setSearchParams(prev => {
-      prev.set(SEARCH_PARAMS.SEARCH, query)
-      return prev
-    })
-  }, [query, setSearchParams])
+    if (query.length > 0) {
+      setSearchParams(prev => {
+        prev.set(param, query)
+        return prev
+      })
+    }
+    if (query.length === 0) {
+      setSearchParams(prev => {
+        prev.delete(param)
+        return prev
+      })
+    }
+  }, [param, query, setSearchParams])
+
+  useEffect(() => {
+    if (isOpen) {
+      inputRef.current.focus()
+    }
+  }, [isOpen])
 
   return {
     activeIndex,
@@ -101,11 +130,14 @@ export const useLiveSearch = (items: string[]) => {
     handleKeyDown,
     handleSelect,
     listRef,
+    inputRef,
     isOpen,
     onChange,
     onClear,
     onFocus,
+    onTogle,
     query,
-    wrapperRef
+    wrapperRef,
+    selectedItem
   }
 }

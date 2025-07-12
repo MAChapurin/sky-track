@@ -7,10 +7,12 @@ import { useNavigate } from 'react-router-dom'
 
 export const FlightItem = ({
   item,
-  query
+  query,
+  airlineFilter
 }: {
   item: IFlight
   query: string
+  airlineFilter: string
 }) => {
   const navigate = useNavigate()
   return (
@@ -35,7 +37,9 @@ export const FlightItem = ({
                 alt={item.airline}
               />
             </div>
-            <div>{item.airline}</div>
+            <div>
+              <HighlightMatch item={item.airline} query={airlineFilter} />
+            </div>
           </div>
           <div className="rounded-xl p-1 bg-secondary dark:bg-secondary-dark">
             {item.aircraftReg}

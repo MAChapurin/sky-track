@@ -1,6 +1,7 @@
 import type { FC, SVGProps } from 'react'
 import {
   ArrowDownIcon,
+  ArrowDownWideNarrowIcon,
   ArrowGroupIcon,
   BackIcon,
   BookmarkIcon,
@@ -24,6 +25,7 @@ import {
 
 const config = {
   arrowDown: ArrowDownIcon,
+  arrowDownWide: ArrowDownWideNarrowIcon,
   arrowGroup: ArrowGroupIcon,
   back: BackIcon,
   bookmark: BookmarkIcon,

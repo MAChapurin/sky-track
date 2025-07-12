@@ -1,4 +1,5 @@
 export * from './arrow-down-icon'
+export * from './arrow-down-wide-narrow-icon'
 export * from './arrow-group-icon'
 export * from './back-icon'
 export * from './bookmark-icon'

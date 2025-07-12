@@ -153,3 +153,9 @@ export const SEARCH_FLIGHTS_VALUES = [
 ].map((el, i) => {
   return { id: i, label: el }
 })
+
+export const AIRLINE_FLIGHTS_VALUES = [
+  ...new Set(FLIGHTS.flatMap(flight => [flight.airline]).filter(Boolean))
+].map((el, i) => {
+  return { id: i, label: el }
+})
