@@ -68,3 +68,7 @@ a:focus-visible {
   outline: 1px solid light-dark(var(--color-accent), var(--color-accent-dark));
   outline-offset: 2px;
 }
+
+.leaflet-control-attribution {
+  display: none !important;
+}

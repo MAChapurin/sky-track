@@ -55,8 +55,8 @@ export const FlightList = ({ list }: FlightListProps) => {
   }, [])
 
   return (
-    <ScrollContainer className="w-full md:flex-row-reverse md:justify-end md:flex gap-4 relative lg:col-span-2">
-      <div className="sticky top-0 snap-start z-10 mb-8">
+    <ScrollContainer className="w-full md:flex-row-reverse md:justify-end md:flex gap-4 relative lg:col-span-2 z-1 pointer-events-none">
+      <div className="sticky top-0 snap-start z-10 mb-8 pointer-events-auto h-fit">
         <FilterCombobox
           items={searchOptions}
           title="from city"
@@ -72,7 +72,7 @@ export const FlightList = ({ list }: FlightListProps) => {
       <ul
         role="list"
         aria-label="Filtered flights"
-        className="flex flex-col gap-4 w-full lg:w-100 h-fit mb-8"
+        className="flex flex-col gap-4 w-full lg:w-100 h-fit mb-8 pointer-events-auto"
       >
         {isLoading
           ? Array.from({ length: list.length }).map((_, i) => (
