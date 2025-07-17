@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom'
-import { BackgroundMap } from '@/widgets'
+
 import { Header } from '@/widgets/header'
+import { BackgroundMap } from '@/entities/map'
 
 export const Layout = () => {
   return (

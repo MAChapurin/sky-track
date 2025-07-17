@@ -11,14 +11,16 @@ export const FLIGHTS: IFlight[] = [
       country: 'Bulgaria',
       countryCode: 'BG',
       timezone: 'UTC +3',
-      code: 'SOF'
+      code: 'SOF',
+      coords: [42.6977, 23.3219]
     },
     to: {
       city: 'Beijing',
       country: 'China',
       countryCode: 'CN',
       timezone: 'UTC +8',
-      code: 'PEK'
+      code: 'PEK',
+      coords: [39.9042, 116.4074]
     },
     airplane: {
       image: '/planes/turkish.png',
@@ -40,14 +42,16 @@ export const FLIGHTS: IFlight[] = [
       country: 'Ireland',
       countryCode: 'IE',
       timezone: 'UTC +1',
-      code: 'DUB'
+      code: 'DUB',
+      coords: [53.3498, -6.2603]
     },
     to: {
       city: 'Larnaca',
       country: 'Cyprus',
       countryCode: 'CY',
       timezone: 'UTC +3',
-      code: 'LCA'
+      code: 'LCA',
+      coords: [34.9167, 33.6233]
     },
     airplane: {
       image: '/planes/ryanair.png',
@@ -69,14 +73,16 @@ export const FLIGHTS: IFlight[] = [
       country: 'France',
       countryCode: 'FR',
       timezone: 'UTC +2',
-      code: 'NCE'
+      code: 'NCE',
+      coords: [43.7102, 7.262]
     },
     to: {
       city: 'Tbilisi',
       country: 'Georgia',
       countryCode: 'GE',
       timezone: 'UTC +4',
-      code: 'TBS'
+      code: 'TBS',
+      coords: [41.7151, 44.8271]
     },
     airplane: {
       image: '/planes/s7.png',
@@ -98,14 +104,16 @@ export const FLIGHTS: IFlight[] = [
       country: 'Portugal',
       countryCode: 'PT',
       timezone: 'UTC +1',
-      code: 'OPO'
+      code: 'OPO',
+      coords: [41.1579, -8.6291]
     },
     to: {
       city: 'Baku',
       country: 'Azerbaijan',
       countryCode: 'AZ',
       timezone: 'UTC +4',
-      code: 'GYD'
+      code: 'GYD',
+      coords: [40.4093, 49.8671]
     },
     airplane: {
       image: '/planes/swiss.png',
@@ -127,14 +135,16 @@ export const FLIGHTS: IFlight[] = [
       country: 'Bulgaria',
       countryCode: 'BG',
       timezone: 'UTC +3',
-      code: 'BOJ'
+      code: 'BOJ',
+      coords: [42.5048, 27.4716]
     },
     to: {
       city: 'Muscat',
       country: 'Oman',
       countryCode: 'OM',
       timezone: 'UTC +4',
-      code: 'MCT'
+      code: 'MCT',
+      coords: [23.588, 58.3829]
     },
     airplane: {
       image: '/planes/lufthansa.png',

@@ -14,6 +14,7 @@ export interface IFlightLocation {
   countryCode: string
   timezone: string
   code: string
+  coords: [number, number]
 }
 
 export type BuildRange<
