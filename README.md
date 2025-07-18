@@ -1,69 +1,58 @@
-# React + TypeScript + Vite
+# ✈️ Sky Track
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Sky Track** — это веб-приложение для визуального отслеживания авиарейсов на интерактивной карте.  
+Позволяет видеть положение самолётов, детали рейса и взаимодействовать с картой в реальном времени.
 
-Currently, two official plugins are available:
+![Sky Track Screenshot](/screen-1.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Возможности
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Отображение маршрутов самолётов на карте
+- Смена темы (светлая/тёмная)
+- Кликабельные маркеры с интерактивными действиями
+- Поиск и фильтрация по авиакомпаниям
+- Сохранение избранных рейсов
+- Прогресс перемещения самолёта по маршруту
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked
+## 🛠️ Технологии
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname
-      }
-      // other options...
-    }
-  }
-])
-```
+| Технология                                                       | Назначение                               |
+| ---------------------------------------------------------------- | ---------------------------------------- |
+| [React 19](https://react.dev/)                                   | UI библиотека                            |
+| [Vite](https://vitejs.dev/)                                      | Быстрый билд/разработка проекта          |
+| [Redux Toolkit](https://redux-toolkit.js.org/)                   | Состояние приложения                     |
+| [Redux Persist](https://github.com/rt2zz/redux-persist)          | Хранение избранных рейсов в localStorage |
+| [React Leaflet](https://react-leaflet.js.org/)                   | Работа с картами и маркерами             |
+| [Tailwind CSS 4](https://tailwindcss.com/)                       | Адаптивная стилизация и темы             |
+| [TypeScript](https://www.typescriptlang.org/)                    | Статическая типизация                    |
+| [Prettier](https://prettier.io/) + [ESLint](https://eslint.org/) | Автоматическая проверка и форматирование |
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🗂 Структура проекта
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname
-      }
-      // other options...
-    }
-  }
-])
+src/
+├── entities/ # Redux slices + типы сущностей
+├── features/ # Изолированные фичи (favorites, theme switcher и т.д.)
+├── shared/ # Общие утилиты, хуки, стили
+├── app/ # Конфигурация хранилища, маршруты, глобальные обёртки
+├── pages/ # Страницы
+├── widgets/ # Большие UI-блоки с логикой
+└── public/
+└── screen-1.png # Скриншот для README
+
+## 📦 Установка
+
+```bash
+git clone https://github.com/your-username/sky-track.git
+cd sky-track
+npm install
+npm run dev
+
+
+
 ```
