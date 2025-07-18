@@ -80,7 +80,7 @@ export const FlightList = ({ list }: FlightListProps) => {
             ))
           : filteredFlights.map((flight, index) => (
               <li
-                key={flight.airline}
+                key={flight.id}
                 className="snap-start animate-fade"
                 style={{ animationDelay: `${index * 50}ms` }}
               >

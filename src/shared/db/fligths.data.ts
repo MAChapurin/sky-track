@@ -1,7 +1,10 @@
+import cuid from 'cuid'
+
 import type { IFlight } from '@/shared/types/flight.types'
 
 export const FLIGHTS: IFlight[] = [
   {
+    id: cuid(),
     logo: '/logos/turkish.svg',
     airline: 'TK143',
     aircraftReg: 'TC-JFP',
@@ -33,6 +36,7 @@ export const FLIGHTS: IFlight[] = [
     }
   },
   {
+    id: cuid(),
     logo: '/logos/ryanair.svg',
     airline: 'RN1782',
     aircraftReg: 'D-AISP',
@@ -64,6 +68,7 @@ export const FLIGHTS: IFlight[] = [
     }
   },
   {
+    id: cuid(),
     logo: '/logos/s7.svg',
     airline: 'S7124',
     aircraftReg: 'RA-73415',
@@ -95,6 +100,7 @@ export const FLIGHTS: IFlight[] = [
     }
   },
   {
+    id: cuid(),
     logo: '/logos/swiss.svg',
     airline: 'LX318',
     aircraftReg: 'HB-JHK',
@@ -126,6 +132,7 @@ export const FLIGHTS: IFlight[] = [
     }
   },
   {
+    id: cuid(),
     logo: '/logos/lufthansa.svg',
     airline: 'LH401',
     aircraftReg: 'D-AIXD',

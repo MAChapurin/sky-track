@@ -1,77 +1,56 @@
-import { useRef, useEffect, type FC } from 'react'
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  useMap,
-  Polyline
-} from 'react-leaflet'
-import L, { Map as LeafletMap } from 'leaflet'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { MapContainer, TileLayer } from 'react-leaflet'
+import { Map as LeafletMap } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import { useAppSelector } from '@/shared/hooks'
-import { CalculateCenterMapByCoords } from '../utils'
-import { Icon } from '@/shared/ui'
-import ReactDOMServer from 'react-dom/server'
-
-const iconHtml = ReactDOMServer.renderToStaticMarkup(
-  <Icon name="location" className="text-white -translate-y-1/2" />
-)
-
-const customIcon = L.divIcon({
-  html: `<div>${iconHtml}</div>`,
-  className: '',
-  iconSize: [24, 24]
-})
-
-const MapUpdater: FC<{
-  coords: [number, number]
-  onMapReady: (map: LeafletMap) => void
-}> = ({ coords, onMapReady }) => {
-  const map = useMap()
-
-  useEffect(() => {
-    if (map) {
-      onMapReady(map)
-    }
-  }, [map])
-
-  useEffect(() => {
-    if (map) {
-      map.flyTo(coords, 5, { duration: 1.5 })
-    }
-  }, [coords])
-
-  return null
-}
+import { MapUpdater } from './map-updater'
+import { PlanePositionMarkerList } from './plane-position-marker-list'
+import { FLIGHTS } from '@/shared/db/fligths.data'
+import { useSwithTheme } from '@/features/theme-swither/model/use-switcher'
+import { THEME_MODE } from '@/features/theme-swither/constants'
+import { ErrorMapWidget } from './error-map-widget'
 
 export const BackgroundMap: React.FC = () => {
-  const { from, to } = useAppSelector(state => state.worldMap)
-
-  const center = CalculateCenterMapByCoords(from, to)
+  const { center } = useAppSelector(state => state.worldMap)
+  const { theme } = useSwithTheme()
+  const isDark = theme === THEME_MODE.DARK
 
   const mapRef = useRef<LeafletMap | null>(null)
+  const [tileError, setTileError] = useState(false)
 
-  const handleMapReady = (map: LeafletMap) => {
+  const handleMapReady = useCallback((map: LeafletMap) => {
     mapRef.current = map
-  }
+  }, [])
+
+  useEffect(() => {
+    setTileError(false)
+  }, [isDark])
 
   return (
-    <div style={{ height: '100vh', width: '100%', position: 'relative' }}>
+    <div className="relative w-full h-screen">
+      {tileError && <ErrorMapWidget />}
       <MapContainer
         center={center}
         zoom={8}
-        style={{ height: '100%', width: '100%' }}
+        style={{
+          height: '100%',
+          width: '100%',
+          background: isDark ? '#00000050' : '#ffffff10'
+        }}
       >
+        <MapUpdater coords={center} onMapReady={handleMapReady} />
         <TileLayer
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+          url={
+            isDark
+              ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+              : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
+          }
+          eventHandlers={{
+            tileerror: () => setTileError(true)
+          }}
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>'
         />
-        <MapUpdater coords={center} onMapReady={handleMapReady} />
-
-        {from && <Marker position={from} icon={customIcon} />}
-        {to && <Marker position={to} icon={customIcon} />}
-
-        {from && to && <Polyline positions={[from, to]} color="orange" />}
+        <PlanePositionMarkerList list={FLIGHTS} />
       </MapContainer>
     </div>
   )

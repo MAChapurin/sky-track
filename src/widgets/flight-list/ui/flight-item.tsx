@@ -1,10 +1,12 @@
-import { setFrom, setTo } from '@/entities/map/model/map.slice'
+import { setActiveFlight, setCenter } from '@/entities/map/model/map.slice'
+import { getPointByProgress } from '@/entities/map/utils'
 import { FavoritesButton } from '@/features/favorites-button/ui/favorites-button'
 import { ProgressLine } from '@/features/progress-line'
 import { KEY_BOARDS } from '@/shared/config'
-import { useAppDispatch } from '@/shared/hooks'
+import { useAppDispatch, useAppSelector } from '@/shared/hooks'
 import type { IFlight } from '@/shared/types'
 import { HighlightMatch } from '@/shared/ui'
+import { cn } from '@/shared/utils'
 import { useNavigate } from 'react-router-dom'
 
 export const FlightItem = ({
@@ -19,14 +21,28 @@ export const FlightItem = ({
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
+  const { activeFlight } = useAppSelector(state => state.worldMap)
+
   const handlerFlightItem = () => {
     navigate(`?airline=${item.airline}`)
-    dispatch(setFrom(item.from.coords))
-    dispatch(setTo(item.to.coords))
+    dispatch(setActiveFlight(item.id))
+    dispatch(
+      setCenter(
+        getPointByProgress(item.from.coords, item.to.coords, item.progress)
+      )
+    )
   }
   return (
     <article
-      className="w-full min-h-50 rounded-2xl cursor-pointer focus-within:p-0.5 p-0.5 focus:outline-0 focus-within:bg-gradient-to-r focus-within:outline-none focus:outline-none focus-within:from-[#E44948] focus-within:to-[#FBA316] overflow-hidden transition-colors"
+      className={cn(
+        'w-full min-h-50 rounded-2xl p-0.5',
+        'cursor-pointer focus:outline-none',
+        'overflow-hidden transition-colors',
+        'bg-gradient-to-r from-transparent to-transparent',
+        {
+          ['from-[#E44948] to-[#FBA316]']: activeFlight === item.id
+        }
+      )}
       onClick={handlerFlightItem}
       role="button"
       tabIndex={0}

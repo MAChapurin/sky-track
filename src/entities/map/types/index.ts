@@ -1,6 +1,12 @@
+import type { IFlight } from '@/shared/types'
+
 export type Coordinates = [number, number]
 
 export interface MapState {
-  from: Coordinates | null
-  to: Coordinates | null
+  activeFlight: string | null
+  center: Coordinates
+}
+
+export interface PlanePositionMarkerListProps {
+  list: IFlight[]
 }

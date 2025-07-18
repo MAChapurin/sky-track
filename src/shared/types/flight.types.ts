@@ -27,6 +27,7 @@ export type BuildRange<
 export type Percent = BuildRange<100>
 
 export interface IFlight {
+  id: string
   airplane: IFlightAirplane
   route: IFlightRoute
   logo: string
