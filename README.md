@@ -54,7 +54,7 @@ src/
 ## 📦 Установка
 
 ```bash
-git clone https://github.com/your-username/sky-track.git
+git clone https://github.com/MAChapurin/sky-track.git
 cd sky-track
 npm install
 npm run dev
