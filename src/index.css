@@ -72,3 +72,19 @@ a:focus-visible {
 .leaflet-control-attribution {
   display: none !important;
 }
+
+@keyframes fuzzy {
+  0% {
+    transform: translate(-10%, -10%);
+  }
+  50% {
+    transform: translate(10%, 10%);
+  }
+  100% {
+    transform: translate(-10%, -10%);
+  }
+}
+
+.fuzzy-overlay {
+  animation: fuzzy 0.4s linear infinite;
+}

@@ -1,4 +1,5 @@
 export * from './custom-navlink'
+export * from './fuzzy-overlay'
 export * from './icon'
 export * from './scroll-container'
 export * from './highlight-match'

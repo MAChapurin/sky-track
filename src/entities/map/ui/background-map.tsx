@@ -9,6 +9,7 @@ import { FLIGHTS } from '@/shared/db/fligths.data'
 import { useSwithTheme } from '@/features/theme-swither/model/use-switcher'
 import { THEME_MODE } from '@/features/theme-swither/constants'
 import { ErrorMapWidget } from './error-map-widget'
+import { FuzzyOverlay } from '@/shared/ui'
 
 export const BackgroundMap: React.FC = () => {
   const { center } = useAppSelector(state => state.worldMap)
@@ -28,6 +29,8 @@ export const BackgroundMap: React.FC = () => {
 
   return (
     <div className="relative w-full h-screen">
+      {/* Идея для лоадера */}
+      <FuzzyOverlay />
       {tileError && <ErrorMapWidget />}
       <MapContainer
         center={center}
@@ -35,7 +38,7 @@ export const BackgroundMap: React.FC = () => {
         style={{
           height: '100%',
           width: '100%',
-          background: isDark ? '#00000050' : '#ffffff10'
+          background: 'transparent'
         }}
       >
         <MapUpdater coords={center} onMapReady={handleMapReady} />

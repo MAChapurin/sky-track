@@ -4,7 +4,7 @@ import { NavError } from '@/widgets'
 export const ErrorMapWidget = () => {
   return (
     <ScrollContainer className="absolute inset-0 z-10 opacity-75">
-      <main className="h-full w-full flex items-center justify-center flex-col text-foreground dark:text-foreground-dark">
+      <div className="h-full w-full flex items-center justify-center flex-col text-foreground dark:text-foreground-dark">
         <div className="w-full max-w-110 flex items-stretch justify-center flex-col gap-1 p-4 bg-background dark:bg-background-dark transition-colors rounded-2xl">
           <h2 className="p-4 text-balance rounded-t-2xl text-4xl font-bold bg-secondary dark:bg-secondary-dark transition-colors">
             Error information
@@ -27,7 +27,7 @@ export const ErrorMapWidget = () => {
           </div>
           <NavError />
         </div>
-      </main>
+      </div>
     </ScrollContainer>
   )
 }
